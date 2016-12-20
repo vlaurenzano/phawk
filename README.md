@@ -31,7 +31,7 @@ echo 'This is a line' | phawk 'echo $ln' #displays 1
 
 
 `
-echo 'This is a line' | phawk 'echo $line' #displays This is a line'
+echo 'This is a line' | phawk 'echo $line' #displays 'This is a line'
 `
 
 3) $v0       -- Also the current line
