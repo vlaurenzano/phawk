@@ -18,6 +18,7 @@ cat my_file.txt | phawk '$myCounter = 0;' 'echo $v0"\n; $myCounter++;"; 'echo $m
 #Special Values
 
 Phawk supplies several values to be used in your line command. 
+
 1) $ln       -- The current 1 based line number
 
 `
