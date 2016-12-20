@@ -12,8 +12,7 @@ foreach(get_defined_functions()['user'] as $func){
 
 function test_pipe_simple_file(){        
     global $phawk;
-    global $simpleTestFile;        
-    echo "cat $simpleTestFile | $phawk '" . 'echo $v1, $v2;' . "'";
+    global $simpleTestFile;            
     $result = shell_exec("cat $simpleTestFile | $phawk '" . 'echo $v1, $v2;' . "'");
     simple_assert($result === '1256ABEFIJMN');            
 }
