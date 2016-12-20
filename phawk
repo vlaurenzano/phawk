@@ -1,0 +1,53 @@
+#!/usr/bin/php
+<?php
+
+switch ($argc){    
+    case $argc < 2:
+        echo 'You must supply a command to phawk', "\n";
+        exit(1);
+    case 2:
+        $init = false;
+        $command = $argv[1];
+        $end = false;
+        break;
+    case 3:        
+        echo 'If you are using more than one command, you must provide a start and end command', "\n";
+        exit(1);
+    case 4:
+        $init    = $argv[1];
+        $command = $argv[2];
+        $end     = $argv[3];
+        break;
+    default:
+        echo 'Too many arguments were passed to phawk.' , "\n";
+        exit(1);
+}
+
+
+if($init){
+    eval($init);
+}
+
+foreach(read_input_stdin() as $ln => $line){        
+    $ln++;
+    $v0 = $line;    
+    $display = null;
+    foreach(explode(" ", $line) as $c => $v){
+        ${'v'.++$c} = $v;
+    }        
+    $x = eval($command);            
+    if($display){
+        echo $line;
+    }
+}
+
+if($end){
+    eval($end);
+}
+
+
+function read_input_stdin(){
+    while(($line = fgets(STDIN)) !== false){                
+        yield $line;
+    }    
+}
