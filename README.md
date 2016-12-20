@@ -13,7 +13,7 @@ cat my_file.txt | phawk 'echo $v1,$v2,"\n";'
 2) Using three commands; a beggining, line, and end command. When used with three commands, the first command will be executed before anything is process, the second will be executed once per line and the third will be executed after the file is digested. 
 
 `
-cat my_file.txt | phawk '$myCounter = 0;' 'echo $v0"\n; $myCounter++;"; 'echo $myCounter, "\n;'
+cat my_file.txt | phawk '$myCounter = 0;' 'echo $v0; $myCounter++;"; 'echo $myCounter, "\n;'
 `
 
 #Special Values
