@@ -5,6 +5,7 @@ Phawk is a simple but powerful php implementation of AWK. With phawk, you can ea
 Usage of phawk is simple, there are only two operating modes and no flags to learn.
 
 1) Using one command. When used with one command, it will be executed for every line of the input file. 
+
 `
 cat my_file.txt | phawk 'echo $v1,$v2,"\n";'
 `
