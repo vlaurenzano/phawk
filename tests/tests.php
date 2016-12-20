@@ -41,9 +41,17 @@ function test_begin_end_functionality() {
 function test_wrong_number_arguments() {
     global $phawk;
     global $simpleTestFile;        
-    $result = shell_exec("cat $simpleTestFile | $phawk " . '\'$myVar = 0;\' \'$myVar++;$display = false;\'' );        
-    echo $result;
-    simple_assert($result == 6);            
+    $result = shell_exec("cat $simpleTestFile | $phawk " . '\'$myVar = 0;\' \'$myVar++;$display = true;\'' );                
+    simple_assert(!$result);            
+}
+
+function test_field_seperators() {
+    global $phawk;
+    $pattern = "test,test,test,test";
+    $result = shell_exec("echo $pattern | $phawk " . '\'echo $v1;\' \',\'' );            
+    simple_assert($result === 'test');            
+    $result = shell_exec("echo $pattern | $phawk " . '\'$myvar;\' \'echo $v1;\' \'$myvar;\' \',\'' );            
+    simple_assert($result === 'test');            
 }
 
 function simple_assert($bool){

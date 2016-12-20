@@ -9,14 +9,25 @@ switch ($argc){
         $init = false;
         $command = $argv[1];
         $end = false;
+        $fs = " ";
         break;
     case 3:        
-        echo 'If you are using more than one command, you must provide a start and end command', "\n";
-        exit(1);
+        $init = false;
+        $command = $argv[1];        
+        $end = false;
+        $fs = $argv[2];
+        break;
     case 4:
         $init    = $argv[1];
         $command = $argv[2];
         $end     = $argv[3];
+        $fs = " ";
+        break;
+    case 5:
+        $init    = $argv[1];
+        $command = $argv[2];
+        $end     = $argv[3];
+        $fs      = $argv[4];
         break;
     default:
         echo 'Too many arguments were passed to phawk.' , "\n";
@@ -31,8 +42,8 @@ if($init){
 foreach(read_input_stdin() as $ln => $line){        
     $ln++;
     $v0 = $line;    
-    $display = null;
-    foreach(explode(" ", $line) as $c => $v){
+    $display = null;    
+    foreach(explode($fs, $line) as $c => $v){
         ${'v'.++$c} = $v;
     }        
     $x = eval($command);            
