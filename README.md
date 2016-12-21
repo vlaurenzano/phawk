@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/vlaurenzano/phawk.svg?branch=master)](https://travis-ci.org/vlaurenzano/phawk)
 # phawk
 Phawk is a simple but powerful php implementation of AWK. With phawk, you can easily digest files using the the power of php. 
 
