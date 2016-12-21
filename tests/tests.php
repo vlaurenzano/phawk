@@ -51,8 +51,7 @@ function test_field_seperators() {
     $pattern = "'test,test,test,test'";
     $result = shell_exec("echo $pattern | $phawk " . '\'echo $v1;\' \',\'' );            
     simple_assert($result === 'test');                
-    $result = shell_exec("echo $pattern | $phawk " . '\'$myvar;\' \'echo $v1;\' \'$myvar;\' \',\'' );                
-    echo $result;
+    $result = shell_exec("echo $pattern | $phawk " . '\'$myvar=1;\' \'echo $v1;\' \'$myvar=2;\' \',\'' );                    
     simple_assert($result === 'test');            
 }
 
