@@ -50,9 +50,9 @@ function test_field_seperators() {
     global $phawk;
     $pattern = "'test,test,test,test'";
     $result = shell_exec("echo $pattern | $phawk " . '\'echo $v1;\' \',\'' );            
-    simple_assert($result === 'test');            
-    echo "echo $pattern | $phawk " . '\'$myvar;\' \'echo $v1;\' \'$myvar;\' \',\'' ;
-    $result = shell_exec("echo $pattern | $phawk " . '\'$myvar;\' \'echo $v1;\' \'$myvar;\' \',\'' );            
+    simple_assert($result === 'test');                
+    $result = shell_exec("echo $pattern | $phawk " . '\'$myvar;\' \'echo $v1;\' \'$myvar;\' \',\'' );                
+    echo $result;
     simple_assert($result === 'test');            
 }
 
