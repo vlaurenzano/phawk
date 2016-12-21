@@ -3,6 +3,7 @@
 $phawk    = __DIR__  . '/../phawk';
 $testFilePath = __DIR__ . '/test_files/';
 $simpleTestFile = $testFilePath . 'simple_test.txt';
+$passed = 0;
 
 foreach(get_defined_functions()['user'] as $func){    
     if(strpos($func, 'test_') === 0){        
@@ -55,12 +56,16 @@ function test_field_seperators() {
 }
 
 function simple_assert($bool){
+    global $passed;
     $trace  = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
     $line   = $trace[0]['line'];                 
     $method = $trace[1]['function'];
     if(!$bool){        
+        $passed = 1;
         echo "Test [$method] failed assertion at line $line" , "\n";
     } else {
         echo "Passed assertion from [$method] line $line" , "\n";
     }
 }
+
+exit($passed);
