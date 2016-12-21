@@ -2,7 +2,7 @@
 Phawk is a simple but powerful php implementation of AWK. With phawk, you can easily digest files using the the power of php. 
 
 # Usage
-Usage of phawk is simple, there are only two operating modes and no flags to learn.
+Usage of phawk is simple, there are only two operating modes.
 
 1) Using one command. When used with one command, it will be executed for every line of the input file. 
 
@@ -10,11 +10,25 @@ Usage of phawk is simple, there are only two operating modes and no flags to lea
 cat my_file.txt | phawk 'echo $v1,$v2,"\n";'
 `
 
+You can also specify the field seperator as the last argument:
+
+`
+cat my_file.txt | phawk 'echo $v1,$v2,"\n";' ','
+`
+
+
 2) Using three commands; a beggining, line, and end command. When used with three commands, the first command will be executed before anything is process, the second will be executed once per line and the third will be executed after the file is digested. 
 
 `
 cat my_file.txt | phawk '$myCounter = 0;' 'echo $v0; $myCounter++;"; 'echo $myCounter, "\n;'
 `
+
+Again you can specify the field seperator as the last argument:
+
+`
+cat my_file.txt | phawk '$myCounter = 0;' 'echo $v0; $myCounter++;"; 'echo $myCounter, "\n;' ','
+`
+
 
 #Special Values
 
